@@ -5,24 +5,30 @@ var ctx = c.getContext("2d");
 
 
 function createparticle() {
-ctx.clearRect(particlepos,particlex,particlelength,particleheight);
 var height = floor.height;
 var particleheight = random(8, 12);
 var particlelength = random(8, 12);
-var particlex = random(650, 800-particleheight);
-var particlepos = 800-particlelength;
-ctx.fillStyle="black";
-ctx.fillRect(particlepos,particlex,particlelength,particleheight);
-setInterval(move, 10);
+var particlepositionx = 800 - particlelength; 
+var particlepositiony = random(650, 800);
+var particleinterval = setInterval(move, 30);
+particlerender();
 function move() {
-	particlepos -= 10;
-	ctx.fillStyle="black";
-	ctx.fillRect(particlepos,particlex,particlelength,particleheight);	
+particlepositionx -= 10;
+particlerender();
+if (particlepositionx < -30) {
+	clearInterval(particleinterval);
+	return;
+}
+}	
+function particlerender() {
+var oldposition = particlepositionx + 30;
+ctx.fillStyle="#964f15";
+ctx.fillRect(oldposition,particlepositiony,10,particleheight);
+
+ctx.fillStyle="blue";
+ctx.fillRect(particlepositionx, particlepositiony, particlelength, particleheight);
 }
 }
 
 
-
-
-createparticle();
-setInterval(createparticle, 400);
+setInterval(createparticle, 500);

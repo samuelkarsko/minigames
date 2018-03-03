@@ -3,7 +3,13 @@ var c = document.getElementById("game1");
 var ctx = c.getContext("2d");
 
 repaint();
-setInterval(changepos, 10);
 
 
 
+
+window.onkeyup = function(e) {
+   var key = e.keyCode ? e.keyCode : e.which;
+   if (key == 32) {
+   		jumpup();
+   }
+}
