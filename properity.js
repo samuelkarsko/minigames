@@ -12,3 +12,4 @@ var figure = {
 	height: 50
 };
 
+var jumpheight = 100;

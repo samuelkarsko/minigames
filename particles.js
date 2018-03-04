@@ -6,8 +6,8 @@ var ctx = c.getContext("2d");
 
 function createparticle() {
 var height = floor.height;
-var particleheight = random(8, 12);
-var particlelength = random(8, 12);
+var particleheight = random(8, 16);
+var particlelength = random(8, 16);
 var particlepositionx = 800 - particlelength; 
 var particlepositiony = random(650, 800);
 var particleinterval = setInterval(move, 30);
@@ -25,7 +25,7 @@ var oldposition = particlepositionx + 30;
 ctx.fillStyle="#964f15";
 ctx.fillRect(oldposition,particlepositiony,10,particleheight);
 
-ctx.fillStyle="blue";
+ctx.fillStyle="black";
 ctx.fillRect(particlepositionx, particlepositiony, particlelength, particleheight);
 }
 }
