@@ -8,7 +8,6 @@ var jumpInterval;
 function jumpup() {
 	if (injump == true) {
 		clearInterval(jumpInterval);
-		console.log("still in jump");
 	}
 injump = true;
 topofjump = false;
@@ -18,13 +17,14 @@ var fastjump = jumpheight * 0.75;
 
 jumpInterval = setInterval(jump, 10);
 
-function jump() {
+function jump() {  
 
-if (figure.y > newposition && topofjump == false) { //jump up
+if (figure.y > newposition && topofjump == false && figure.y > 3) { //jump up
 
 var actualjumpheight = oldposition - figure.y;
 var jumpheightpercent = actualjumpheight / jumpheight;
 ctx.clearRect(figure.x,figure.y,figure.width,figure.height);
+
 
 if (jumpheightpercent < 0.75) {
 figure.y -= 5;
@@ -33,6 +33,7 @@ figurepaint();
 	figure.y -= 2;
 	figurepaint();
 }
+
 
 }else{ //jump down 
 topofjump = true;
@@ -65,11 +66,16 @@ clearInterval(jumpInterval);
 
 
 
+
 function updatefloor(){
 	//creating floor
+
 floor.y = c.height - floor.height;
 floor.width = c.width;
 ctx.fillStyle="#964f15";
+if (died == true) {
+ctx.fillStyle="black";	
+}
 ctx.fillRect(floor.x,floor.y,floor.width,floor.height);
 
 }

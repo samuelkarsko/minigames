@@ -2,18 +2,18 @@
 var c = document.getElementById("game1");
 var ctx = c.getContext("2d");
 
-
+var outerparticleinterval = setInterval(createparticle, 500)
 
 function createparticle() {
 var height = floor.height;
 var particleheight = random(8, 16);
 var particlelength = random(8, 16);
 var particlepositionx = 800 - particlelength; 
-var particlepositiony = random(650, 800);
+var particlepositiony = random(650, 800 - particleheight);
 var particleinterval = setInterval(move, 30);
-particlerender();
+particlerender(); 
 function move() {
-particlepositionx -= 10;
+particlepositionx -= 6;
 particlerender();
 if (particlepositionx < -30) {
 	clearInterval(particleinterval);
@@ -31,4 +31,4 @@ ctx.fillRect(particlepositionx, particlepositiony, particlelength, particleheigh
 }
 
 
-setInterval(createparticle, 500);
+;
